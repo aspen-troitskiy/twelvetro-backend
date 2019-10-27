@@ -1,6 +1,6 @@
 
 const express = require('express');
-const routes = require('./routes');
+const { actions, base, state } = require('./routes');
 const setup = require('./setup');
 const { name: svcName, version } = require('../package.json');
 
@@ -8,7 +8,9 @@ const app = express();
 
 setup();
 
-app.use('/', routes.base);
+app.use('/', base);
+app.use('/actions', actions);
+app.use('/state', state);
 
 const server = app.listen(process.env.PORT, () => {
   // eslint-disable-next-line no-console

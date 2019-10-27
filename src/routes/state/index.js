@@ -4,8 +4,8 @@ const express = require('express');
 const router = express.Router();
 
 // base routes
-router.get('/', (req, res) => {
-  res.send('state route');
+router.get('/:gameId', (req, res) => {
+  res.send(`state route ${req.params.gameId}`);
 });
 
 
