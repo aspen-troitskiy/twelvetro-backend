@@ -1,12 +1,14 @@
 
 const express = require('express');
+const { addGame } = require('../../lib');
 
 const router = express.Router();
 
 // base routes
-router.post('/', (req, res) => {
+router.post('/new_game', (req, res) => {
   // req.
-  res.send('actions');
+  const gameObject = addGame();
+  res.send(gameObject);
 });
 
 
