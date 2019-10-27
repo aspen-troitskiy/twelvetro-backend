@@ -1,0 +1,12 @@
+
+node_modules/
+
+# environment related
+.env*
+**/temp/
+.nyc_output
+
+# Editors
+.vscode
+.sublime
+.idea

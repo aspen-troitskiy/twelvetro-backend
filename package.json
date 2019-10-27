@@ -1,0 +1,47 @@
+{
+  "name": "nodejs-project-template",
+  "version": "0.0.1",
+  "description": "template for a nodejs project",
+  "main": "src/index.js",
+  "engines": {
+    "node": ">=12.0.0",
+    "npm": ">=6.9.0"
+  },
+  "scripts": {
+    "audit": "npm audit",
+    "clean": "rm -rf .nyc_output",
+    "cover": "nyc npm test",
+    "lint": "eslint src test",
+    "precover": "npm-run-all lint audit",
+    "prepublish": "npm-run-all clean",
+    "prestart": "npm run setup-env",
+    "pretest": "npm run setup-env:test",
+    "preversion": "npm-run-all lint audit test",
+    "setup-env:test": "cp test/.env-test .env",
+    "setup-env": "cp .env-sample .env",
+    "start": "clear && nodemon -r dotenv/config",
+    "test": "clear && mocha -r dotenv/config"
+  },
+  "author": "Dmitry Troitskiy",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^7.0.0",
+    "express": "^4.16.4",
+    "lodash": "^4.17.11",
+    "nodemon": "^1.18.11",
+    "npm-run-all": "^4.1.5",
+    "nyc": "^14.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.2",
+    "mocha": "^6.1.4",
+    "should": "^13.2.3",
+    "supertest": "^4.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dmitriytro/nodejs-project-template"
+  }
+}
