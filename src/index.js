@@ -1,5 +1,6 @@
 
 const express = require('express');
+const bodyParser = require('body-parser');
 const { actions, base, state } = require('./routes');
 const setup = require('./setup');
 const { name: svcName, version } = require('../package.json');
@@ -7,6 +8,8 @@ const { name: svcName, version } = require('../package.json');
 const app = express();
 
 setup();
+
+app.use(bodyParser.json());
 
 app.use('/', base);
 app.use('/actions', actions);

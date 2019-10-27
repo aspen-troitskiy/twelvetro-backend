@@ -8,5 +8,4 @@ router.get('/', (req, res) => {
   res.send('state route');
 });
 
-
 module.exports = router;

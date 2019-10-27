@@ -1,20 +1,21 @@
 
 const express = require('express');
-const { addGame } = require('../../lib');
-const { cacheSingleton } = require('../../lib');
+const { addGame, cacheSingleton } = require('../../lib');
+const { execute } = require('../../lib/events');
 
 const router = express.Router();
 
 router.post('/new_game', (req, res) => {
-  // req.
   const gameObject = addGame();
   res.send(gameObject);
 });
 
-router.post('/move/:gameId', (req, res) => {
+router.post('/move', (req, res) => {
+  const { from, to, gameId } = req.body;
   const cache = cacheSingleton.getInstance();
-  const gameObject = cache[req.params.gameId];
+  const gameObject = cache[gameId];
 
+  execute(gameObject, from, to);
   res.send(gameObject);
 });
 
