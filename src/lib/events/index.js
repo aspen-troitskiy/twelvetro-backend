@@ -1,6 +1,7 @@
 
 function generateNewValue(parentValue) {
-  return Math.floor(Math.random() * parentValue - 1) + 1; // TODO
+  const max = parentValue - 1;
+  return Math.floor(Math.random() * Math.floor(max)) + 1;
 }
 
 function getCell(gameField, indexes) {
@@ -50,12 +51,6 @@ function validateMove(gameField, activeIndexes, targetIndexes) {
     isTargetTooFar(gameField, activeIndexes, targetIndexes),
     areCellsTheSame(activeCell, targetCell),
   ].every(x => x === false);
-  console.log([
-    isCellBlank(activeCell),
-    !isCellBlank(targetCell) && !areCellsEquil(activeCell, targetCell),
-    isTargetTooFar(gameField, activeIndexes, targetIndexes),
-    areCellsTheSame(activeCell, targetCell),
-  ]);
   if (isValid === false) {
     throw new Error(`attempt to execute unacceptable move: activeIndexes ${activeIndexes}, targetIndexes: ${targetIndexes}`);
   }
